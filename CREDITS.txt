@@ -1,0 +1,9 @@
+Thanks to:
+
+Devan-Kerman, for creating Stacc API.
+  https://github.com/Devan-Kerman/Stacc
+
+KrisCris, for creating AllStackable. Several of my mixins are derived from its code
+  https://github.com/KrisCris/AllStackable
+
+LlamaLad7 on the Fabric Discord, for helping with ItemStackMixin.java
