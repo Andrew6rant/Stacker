@@ -4,8 +4,10 @@
   "package": "io.github.Andrew6rant.stacker.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
+    "BucketItemMixin",
     "ItemStackMixin",
-    "BucketItemMixin"
+    "MilkBucketItemMixin",
+    "StewItemMixin"
   ],
   "client": [],
   "server": [],

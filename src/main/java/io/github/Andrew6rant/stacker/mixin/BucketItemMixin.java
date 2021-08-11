@@ -15,9 +15,11 @@ public class BucketItemMixin {
 
     @Inject(method = "getEmptiedStack", at = @At(value = "HEAD"), cancellable = true)
     private static void stackableBucket(ItemStack stack, PlayerEntity player, CallbackInfoReturnable<ItemStack> cir){
-        ItemsHelper.insertNewItem(player, new ItemStack(Items.BUCKET));
-        stack.decrement(1);
-        cir.setReturnValue(stack);
+        if(!player.isCreative()) {
+            ItemsHelper.insertNewItem(player, new ItemStack(Items.BUCKET));
+            stack.decrement(1);
+            cir.setReturnValue(stack);
+        }
     }
 
 }
