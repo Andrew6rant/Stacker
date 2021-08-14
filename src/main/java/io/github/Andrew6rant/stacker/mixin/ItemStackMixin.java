@@ -1,7 +1,5 @@
 package io.github.Andrew6rant.stacker.mixin;
 
-import io.github.Andrew6rant.stacker.Stacker;
-import io.github.Andrew6rant.stacker.StackerClient;
 import io.github.Andrew6rant.stacker.StackerConfig;
 import net.minecraft.item.Item;
 import org.spongepowered.asm.mixin.Mixin;

@@ -21,5 +21,4 @@ public class BucketItemMixin {
             cir.setReturnValue(stack);
         }
     }
-
 }
