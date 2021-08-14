@@ -5,11 +5,11 @@ import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
 import net.fabricmc.api.ModInitializer;
 
 public class Stacker implements ModInitializer {
+	public static StackerConfig CONFIG;
+
 	@Override
 	public void onInitialize() {
-		//AutoConfig.register(StackerConfig.class, GsonConfigSerializer::new);
+		AutoConfig.register(StackerConfig.class, GsonConfigSerializer::new);
+		CONFIG = AutoConfig.getConfigHolder(StackerConfig.class).getConfig();
 	}
-	//public static StackerConfig getConfig() {
-		//return AutoConfig.getConfigHolder(StackerConfig.class).getConfig();
-	//}
 }
