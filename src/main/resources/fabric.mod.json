@@ -20,6 +20,9 @@
   "entrypoints": {
     "main": [
       "io.github.Andrew6rant.stacker.Stacker"
+    ],
+    "client": [
+      "io.github.Andrew6rant.stacker.StackerClient"
     ]
   },
   "mixins": [
