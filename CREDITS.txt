@@ -6,4 +6,6 @@ Devan-Kerman, for creating Stacc API.
 KrisCris, for creating AllStackable. Several of my mixins are derived from its code
   https://github.com/KrisCris/AllStackable
 
-LlamaLad7 on the Fabric Discord, for helping with ItemStackMixin.java
+LlamaLad7 on the Fabric Discord, for help on ItemStackMixin.java and initializing config before mixins.
+
+Tropheus Jay (TropheusJ) for helping set up the config system
