@@ -38,7 +38,7 @@ dependencies {
 		exclude(group: "net.fabricmc.fabric-api")
 	}
 
-	modApi("com.terraformersmc:modmenu:2.0.2")
+	modApi("com.terraformersmc:modmenu:${project.modmenu_version}")
 
 	// PSA: Some older mods, compiled on Loom 0.2.1, might have outdated Maven POMs.
 	// You may need to force-disable transitiveness on them.

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "stacker",
-  "version": "1.1.0",
+  "version": "2.0.0",
 
   "name": "Stacker",
   "description": "Change the stack size of all items!",
