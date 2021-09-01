@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "stacker",
-  "version": "${version}",
+  "version": "1.1.0",
 
   "name": "Stacker",
   "description": "Change the stack size of all items!",
@@ -9,8 +9,9 @@
     "Andrew6rant (Andrew Grant)"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/stacker",
+    "sources": "https://github.com/Andrew6rant/Stacker",
+    "issues": "https://github.com/Andrew6rant/Stacker/issues"
   },
 
   "license": "CC0-1.0",
@@ -20,6 +21,9 @@
   "entrypoints": {
     "main": [
       "io.github.Andrew6rant.stacker.Stacker"
+    ],
+    "modmenu": [
+      "io.github.Andrew6rant.stacker.StackerModMenu"
     ]
   },
   "mixins": [
@@ -31,6 +35,11 @@
     "fabric": "*",
     "minecraft": "1.17.x",
     "java": ">=16"
+  },
+  "custom": {
+    "modmenu": [
+      "io.github.Andrew6rant.stacker.StackerConfig"
+    ]
   },
   "suggests": {
     "another-mod": "*"

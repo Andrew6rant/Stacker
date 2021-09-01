@@ -31,12 +31,15 @@ dependencies {
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
-	include "net.devtech:Stacc:1.2.3"
-	modRuntime(include("net.devtech:Stacc:1.2.3"))
+	include "net.devtech:Stacc:1.3.0"
+	modRuntime(include("net.devtech:Stacc:1.3.0"))
 
 	modApi("me.shedaniel.cloth:cloth-config-fabric:5.0.38") {
 		exclude(group: "net.fabricmc.fabric-api")
 	}
+
+	modApi("com.terraformersmc:modmenu:2.0.2")
+
 	// PSA: Some older mods, compiled on Loom 0.2.1, might have outdated Maven POMs.
 	// You may need to force-disable transitiveness on them.
 }

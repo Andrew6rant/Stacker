@@ -8,7 +8,8 @@
     "ItemStackMixin",
     "MilkBucketItemMixin",
     "StewItemMixin",
-    "LimitFurnaceStackMixin"
+    "LimitFurnaceStackMixin",
+    "ItemRenderScaleMixin"
   ],
   "client": [],
   "server": [],
