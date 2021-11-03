@@ -4,12 +4,16 @@
   "package": "io.github.Andrew6rant.stacker.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
+    "AnvilScreenHandlerMixin",
     "BucketItemMixin",
+    "DispenserBehaviorMixin",
+    "HorseScreenHandlerMixin",
+    "ItemRenderScaleMixin",
     "ItemStackMixin",
-    "MilkBucketItemMixin",
-    "StewItemMixin",
+    "JukeboxBlockMixin",
     "LimitFurnaceStackMixin",
-    "ItemRenderScaleMixin"
+    "MilkBucketItemMixin",
+    "StewItemMixin"
   ],
   "client": [],
   "server": [],

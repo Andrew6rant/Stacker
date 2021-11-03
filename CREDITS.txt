@@ -3,6 +3,9 @@ Thanks to:
 Devan-Kerman, for creating Stacc API.
   https://github.com/Devan-Kerman/Stacc
 
+ZoeyTheEgoist, for allowing me to use and modify mixins from LenientStackSize
+  https://github.com/ZoeyTheEgoist/FabricMods
+
 KrisCris, for creating AllStackable. Several of my mixins are derived from its code
   https://github.com/KrisCris/AllStackable
 
