@@ -1,5 +1,5 @@
 # Stacker
-Minecraft mod to change the stack size of all items. For Fabric 1.17
+Minecraft mod to change the stack size of all items. For Fabric 1.17.1 and 1.18.1.
 
 ![Stacker Mod Cover Image](https://imgur.com/C0I2Z2p.png)
 
