@@ -1,10 +1,11 @@
 plugins {
 	id 'fabric-loom' version '0.10-SNAPSHOT'
 	id 'maven-publish'
+	id "me.shedaniel.unified-publishing" version "0.1.+"
 }
 
-sourceCompatibility = JavaVersion.VERSION_16
-targetCompatibility = JavaVersion.VERSION_16
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17
 
 archivesBaseName = project.archives_base_name
 version = project.mod_version
@@ -60,8 +61,8 @@ tasks.withType(JavaCompile).configureEach {
 	// If Javadoc is generated, this must be specified in that task too.
 	it.options.encoding = "UTF-8"
 
-	// Minecraft 1.17 (21w19a) upwards uses Java 16.
-	it.options.release = 16
+	// Minecraft 1.18 and upwards uses Java 17.
+	it.options.release = 17
 }
 
 java {
@@ -97,5 +98,49 @@ publishing {
 		// Notice: This block does NOT have the same function as the block in the top level.
 		// The repositories here will be used for publishing your artifact, not for
 		// retrieving dependencies.
+	}
+}
+
+unifiedPublishing {
+	project {
+		changelog = "Added Config! \nTesting, this file was uploaded automatically by the unifiedPublishing plugin."
+		releaseType = "release"
+		gameVersions = ["1.18.2"]
+		gameLoaders = ["fabric"]
+
+		mainPublication tasks.remapJar // Declares the publicated jar
+
+		relations {
+			depends { // Mark as a required dependency
+				curseforge = "fabric-api" // Optional, project slug
+				modrinth = "fabric-api" // Optional, project slug or id
+				curseforge = "cloth-config"
+				modrinth = "cloth-config"
+			}
+			includes { // Mark as an included dependency
+				curseforge = "stacc"
+				// Stacc API isn't on Modrinth
+			}
+			optional { // Mark as an optional dependency
+				curseforge = "modmenu"
+				modrinth = "modmenu"
+			}
+		}
+
+		var cfToken = System.getenv("CF_TOKEN")
+		if (cfToken != null) {
+			curseforge {
+				token = cfToken
+				id = "515415" // Required, must be a string, ID of CurseForge project
+			}
+		}
+
+		var mrToken = System.getenv("MODRINTH_TOKEN")
+		if (mrToken != null) {
+			modrinth {
+				token = mrToken
+				id = "7pbXPVrB" // Required, must be a string, ID of Modrinth project
+			}
+		}
 	}
 }
