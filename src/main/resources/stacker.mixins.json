@@ -8,14 +8,16 @@
     "BucketItemMixin",
     "DispenserBehaviorMixin",
     "HorseScreenHandlerMixin",
-    "ItemRenderScaleMixin",
+    "ItemAccess",
     "ItemStackMixin",
     "JukeboxBlockMixin",
     "LimitFurnaceStackMixin",
     "MilkBucketItemMixin",
     "StewItemMixin"
   ],
-  "client": [],
+  "client": [
+    "ItemRenderScaleMixin"
+  ],
   "server": [],
   "injectors": {
     "defaultRequire": 1

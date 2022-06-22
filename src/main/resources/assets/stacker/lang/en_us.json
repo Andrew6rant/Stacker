@@ -2,10 +2,11 @@
   "text.autoconfig.stacker.title": "Stacker Config",
   "text.autoconfig.stacker.option.maxStacker": "Maximum Stack Size",
   "text.autoconfig.stacker.option.maxStacker.@Tooltip": "Do not set larger than 2147483647 or below 1",
-  "text.autoconfig.stacker.option.maxStacker.@PrefixText": "Changing the maximum stack size needs a restart to take effect",
-  "text.autoconfig.stacker.option.variableOverride": "Variable Font Scale Override",
-  "text.autoconfig.stacker.option.variableOverride.@Tooltip": "Set this to §aYes §fif you want font to scale with amount",
-  "text.autoconfig.stacker.option.variableOverride.@PrefixText": "Font changes are applied instantly and do not need a restart",
+  "text.autoconfig.stacker.option.maxStacker.@PrefixText": "§cAll changes are applied instantly and do not need a restart!",
+  "text.autoconfig.stacker.option.fontOverride": "Variable Font Scale Override",
+  "text.autoconfig.stacker.option.fontOverride.@Tooltip": "Set this to §aYes §fif you want font size to scale with amount",
   "text.autoconfig.stacker.option.itemCountScaleInt": "Item Text Size",
-  "text.autoconfig.stacker.option.itemCountScaleInt.@Tooltip": "Only applies if Variable Font Override is set to §cNo"
+  "text.autoconfig.stacker.option.itemCountScaleInt.@Tooltip": "Only applies if Variable Font Override is set to §cNo",
+  "text.autoconfig.stacker.option.itemIgnore": "Don't change the stack size of: (Format: §fmod:name §ror §f#tag:name§r)",
+  "text.autoconfig.stacker.option.itemOverride": "Change the stack size of, separate from the max stack size: (Format: §fmod:name:amount §ror §f#tag:name:amount§r)"
 }

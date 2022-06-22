@@ -2,10 +2,8 @@
   "text.autoconfig.stacker.title": "Stacker配置",
   "text.autoconfig.stacker.option.maxStacker": "最大堆叠大小",
   "text.autoconfig.stacker.option.maxStacker.@Tooltip": "不要设置超过2147483647，也不要小于1",
-  "text.autoconfig.stacker.option.maxStacker.@PrefixText": "更改最大堆叠大小需要重新启动才会生效",
-  "text.autoconfig.stacker.option.variableOverride": "动态字体比例覆盖",
-  "text.autoconfig.stacker.option.variableOverride.@Tooltip": "将该项设置为 §a是 §f如果您希望字体随数量大小而变化",
-  "text.autoconfig.stacker.option.variableOverride.@PrefixText": "字体更改立即生效，无需重新启动",
+  "text.autoconfig.stacker.option.fontOverride": "动态字体比例覆盖",
+  "text.autoconfig.stacker.option.fontOverride.@Tooltip": "将该项设置为 §a是 §f如果您希望字体随数量大小而变化",
   "text.autoconfig.stacker.option.itemCountScaleInt": "物品数量字体大小",
   "text.autoconfig.stacker.option.itemCountScaleInt.@Tooltip": "仅在动态字体比例覆盖设置为 §c否 §f时适用"
 }
