@@ -1,14 +1,14 @@
 {
   "replace": false,
   "values": [
-    "inmis:ender_pouch",
-    "inmis:baby_backpack",
-    "inmis:frayed_backpack",
-    "inmis:plated_backpack",
-    "inmis:gilded_backpack",
-    "inmis:bejeweled_backpack",
-    "inmis:blazing_backpack",
-    "inmis:withered_backpack",
-    "inmis:endless_backpack"
+    {"id": "inmis:ender_pouch", "required": false},
+    {"id": "inmis:baby_backpack", "required": false},
+    {"id": "inmis:frayed_backpack", "required": false},
+    {"id": "inmis:plated_backpack", "required": false},
+    {"id": "inmis:gilded_backpack", "required": false},
+    {"id": "inmis:bejeweled_backpack", "required": false},
+    {"id": "inmis:blazing_backpack", "required": false},
+    {"id": "inmis:withered_backpack", "required": false},
+    {"id": "inmis:endless_backpack", "required": false}
   ]
 }

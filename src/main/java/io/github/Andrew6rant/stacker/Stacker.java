@@ -11,6 +11,8 @@ import net.minecraft.tag.TagKey;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.HashSet;
 import java.util.List;
@@ -20,6 +22,7 @@ import java.util.stream.Collectors;
 import static net.minecraft.util.registry.Registry.ITEM_KEY;
 
 public class Stacker implements ModInitializer {
+	private static final Logger LOGGER = LogManager.getLogger("Stacker");
 	private static Stacker stacker;
 	static ConfigHolder<StackerConfig> stackerConfig;
 
@@ -31,15 +34,11 @@ public class Stacker implements ModInitializer {
 			loadStacker("save");
 			return ActionResult.success(true);
 		});
-		ServerLifecycleEvents.SERVER_STARTED.register(server -> {
-			loadStacker("load");
-		});
-		ServerLifecycleEvents.END_DATA_PACK_RELOAD.register((server, resourceManager, success) -> {
-			loadStacker("reload");
-		});
+		ServerLifecycleEvents.SERVER_STARTED.register(server -> loadStacker("load"));
+		ServerLifecycleEvents.END_DATA_PACK_RELOAD.register((server, resourceManager, success) -> loadStacker("reload"));
 	}
 	public static void loadStacker(String configMsg) {
-		System.out.println("Stacker: Attempting to "+configMsg+" config...");
+		LOGGER.info("Stacker: Attempting to "+configMsg+" config...");
 		Set<String> invalidSet = new HashSet<>();
 		for (Item item : Registry.ITEM) {
 			if (!item.isDamageable()) {
@@ -48,14 +47,15 @@ public class Stacker implements ModInitializer {
 			Stacker.setMax(item, Stacker.overrideItem(item, stackerConfig.getConfig().itemOverride, invalidSet));
 		}
 		if (invalidSet.size() > 0) {
-			System.err.println("Stacker: Invalid override entries!");
-			System.err.println("Stacker: The following entries were invalid:");
+			LOGGER.error("Stacker: Invalid override entries!");
+			LOGGER.warn("Stacker: The following entries were invalid:");
 			for (String invalid : invalidSet) {
-				System.err.println("Stacker: \""+invalid+"\"");
+				LOGGER.warn("Stacker: \""+invalid+"\"");
 			}
-			System.err.println("Stacker: Make sure to use the format, \"mod:item:max_stack\", or \"#tag:item:max_stack\".");
+			LOGGER.warn("Stacker: Make sure to use the format, \"mod:item:max_stack\", or \"#tag:item:max_stack\".");
 		}
-		System.out.println(configMsg.equals("save") ? "Stacker: Config saved!": "Stacker: Config "+configMsg+"ed!");
+
+		LOGGER.info(configMsg.equals("save") ? "Stacker: Config saved!": "Stacker: Config "+configMsg+"ed!");
 	}
 	public static void setMax(Item item, int max) {
 		if (max >0) {
