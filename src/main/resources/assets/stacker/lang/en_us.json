@@ -7,6 +7,5 @@
   "text.autoconfig.stacker.option.fontOverride.@Tooltip": "Set this to §aYes §fif you want font size to scale with amount",
   "text.autoconfig.stacker.option.itemCountScaleInt": "Item Text Size",
   "text.autoconfig.stacker.option.itemCountScaleInt.@Tooltip": "Only applies if Variable Font Override is set to §cNo",
-  "text.autoconfig.stacker.option.itemIgnore": "Don't change the stack size of: (Format: §fmod:name §ror §f#tag:name§r)",
   "text.autoconfig.stacker.option.itemOverride": "Change the stack size of, separate from the max stack size: (Format: §fmod:name:amount §ror §f#tag:name:amount§r)"
 }

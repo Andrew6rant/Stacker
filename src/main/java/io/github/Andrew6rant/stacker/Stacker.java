@@ -12,7 +12,9 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import static net.minecraft.util.registry.Registry.ITEM_KEY;
@@ -20,6 +22,7 @@ import static net.minecraft.util.registry.Registry.ITEM_KEY;
 public class Stacker implements ModInitializer {
 	private static Stacker stacker;
 	static ConfigHolder<StackerConfig> stackerConfig;
+
 	@Override
 	public void onInitialize() {
 		stacker = this;
@@ -37,15 +40,20 @@ public class Stacker implements ModInitializer {
 	}
 	public static void loadStacker(String configMsg) {
 		System.out.println("Stacker: Attempting to "+configMsg+" config...");
+		Set<String> invalidSet = new HashSet<>();
 		for (Item item : Registry.ITEM) {
 			if (!item.isDamageable()) {
-				if (!Stacker.hasConfigTag(item, stackerConfig.getConfig().itemIgnore)) {
-					if (!Stacker.hasConfigItem(Registry.ITEM.getId(item).toString(), stackerConfig.getConfig().itemIgnore)) {
-						Stacker.setMax(item, stackerConfig.getConfig().maxStacker);
-					}
-				}
+				Stacker.setMax(item, stackerConfig.getConfig().maxStacker);
 			}
-			Stacker.setMax(item, Stacker.overrideItem(item, stackerConfig.getConfig().itemOverride));
+			Stacker.setMax(item, Stacker.overrideItem(item, stackerConfig.getConfig().itemOverride, invalidSet));
+		}
+		if (invalidSet.size() > 0) {
+			System.err.println("Stacker: Invalid override entries!");
+			System.err.println("Stacker: The following entries were invalid:");
+			for (String invalid : invalidSet) {
+				System.err.println("Stacker: \""+invalid+"\"");
+			}
+			System.err.println("Stacker: Make sure to use the format, \"mod:item:max_stack\", or \"#tag:item:max_stack\".");
 		}
 		System.out.println(configMsg.equals("save") ? "Stacker: Config saved!": "Stacker: Config "+configMsg+"ed!");
 	}
@@ -60,45 +68,40 @@ public class Stacker implements ModInitializer {
 	public static Stacker getStacker() {
 		return stacker;
 	}
-	public static Integer overrideItem(Item item, List<String> overrideList) {
+	public static boolean isValid(String overrideEntry, String[] splitEntry, Set<String> invalidSet) {
+		if (splitEntry.length != 3) {
+			invalidSet.add(overrideEntry);
+			return false;
+		}
+		try {
+			int max = Integer.parseInt(splitEntry[2]);
+		} catch (NumberFormatException e) {
+			invalidSet.add(overrideEntry);
+			return false;
+		}
+		return true;
+	}
+	public static Integer overrideItem(Item item, List<String> overrideList, Set<String> invalidSet) {
 		for(String overrideEntry : overrideList) {
 			if (overrideEntry.startsWith("#")) {
-				String[] splitEntry = overrideEntry.substring(1).split(":"); // split into three parts: tag id, item name, max count
-				List<TagKey<Item>> itemStream = item.getRegistryEntry().streamTags().collect(Collectors.toList());
-				for (TagKey<Item> tagKey : itemStream) {
-					if (item.getRegistryEntry().isIn(TagKey.of(ITEM_KEY, new Identifier(splitEntry[0], splitEntry[1])))) {
-						return Integer.parseInt(splitEntry[2]);
+				String[] splitEntry = overrideEntry.trim().substring(1).split(":"); // split into three parts: tag id, item name, max count
+				if (isValid(overrideEntry, splitEntry, invalidSet)) {
+					List<TagKey<Item>> itemStream = item.getRegistryEntry().streamTags().collect(Collectors.toList());
+					for (TagKey<Item> tagKey : itemStream) {
+						if (item.getRegistryEntry().isIn(TagKey.of(ITEM_KEY, new Identifier(splitEntry[0], splitEntry[1])))) {
+							return Integer.parseInt(splitEntry[2]);
+						}
 					}
 				}
 			} else {
-				String[] splitEntry = overrideEntry.split(":"); // split into three parts: tag id, item name, max count
-				if (Registry.ITEM.getId(item).toString().equalsIgnoreCase(splitEntry[0] + ":" + splitEntry[1])) {
-					return Integer.parseInt(splitEntry[2]);
+				String[] splitEntry = overrideEntry.trim().split(":"); // split into three parts: tag id, item name, max count
+				if (isValid(overrideEntry, splitEntry, invalidSet)) {
+					if (Registry.ITEM.getId(item).toString().equalsIgnoreCase(splitEntry[0] + ":" + splitEntry[1])) {
+						return Integer.parseInt(splitEntry[2]);
+					}
 				}
 			}
 		}
 		return 0;
-	}
-	public static boolean hasConfigTag(Item item, List<String> configTags) {
-		for(String tag : configTags) {
-			if (tag.startsWith("#")) {
-				String[] splitTag = tag.substring(1).split(":"); // split into two parts: tag id, item name
-				List<TagKey<Item>> itemStream = item.getRegistryEntry().streamTags().collect(Collectors.toList());
-				for (TagKey<Item> tagKey : itemStream) {
-					if (item.getRegistryEntry().isIn(TagKey.of(ITEM_KEY, new Identifier(splitTag[0], splitTag[1])))) {
-						return true;
-					}
-				}
-			}
-		}
-		return false;
-	}
-	public static boolean hasConfigItem(String registryItem, List<String> configItems) {
-		for(String item : configItems) {
-			if(registryItem.equalsIgnoreCase(item.trim())) {
-				return true;
-			}
-		}
-		return false;
 	}
 }

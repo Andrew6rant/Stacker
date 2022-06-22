@@ -30,12 +30,10 @@ public class StackerConfig implements ConfigData {
     @ConfigEntry.BoundedDiscrete(min = 0, max = 50)
     public int itemCountScaleInt = 25;
 
-    public List<String> itemIgnore = Arrays.asList(
-        "techreborn:red_cell_battery",
-        "#inmis:backpacks");
-
     public List<String> itemOverride = Arrays.asList(
         "minecraft:totem_of_undying:16",
-        "#c:potions:16"
+        "#c:potions:16",
+        "#inmis:backpacks:1",
+        "techreborn:red_cell_battery:1"
     );
 }
