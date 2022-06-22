@@ -34,6 +34,6 @@ public class StackerConfig implements ConfigData {
         "minecraft:totem_of_undying:16",
         "#c:potions:16",
         "#inmis:backpacks:1",
-        "techreborn:red_cell_battery:1"
+        "#techreborn:not_stackable:1"
     );
 }

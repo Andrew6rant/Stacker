@@ -1,0 +1,30 @@
+{
+  "replace": false,
+  "values": [
+    "techreborn:quantum_helmet",
+    "techreborn:quantum_chestplate",
+    "techreborn:quantum_leggings",
+    "techreborn:quantum_boots",
+    "techreborn:red_cell_battery",
+    "techreborn:lithium_ion_battery",
+    "techreborn:lithium_ion_batpack",
+    "techreborn:energy_crystal",
+    "techreborn:lapotron_crystal",
+    "techreborn:lapotronic_orb",
+    "techreborn:lapotronic_orbpack",
+    "techreborn:basic_drill",
+    "techreborn:basic_chainsaw",
+    "techreborn:basic_jackhammer",
+    "techreborn:electric_treetap",
+    "techreborn:advanced_drill",
+    "techreborn:advanced_chainsaw",
+    "techreborn:advanced_jackhammer",
+    "techreborn:rock_cutter",
+    "techreborn:industrial_drill",
+    "techreborn:industrial_chainsaw",
+    "techreborn:industrial_jackhammer",
+    "techreborn:nanosaber",
+    "techreborn:omni_tool",
+    "techreborn:cloaking_device"
+  ]
+}
