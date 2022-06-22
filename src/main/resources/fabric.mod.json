@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "stacker",
-  "version": "2.2.0",
+  "version": "3.0.0-1.18.2",
 
   "name": "Stacker",
   "description": "Change the stack size of all items!",
@@ -34,10 +34,9 @@
     "fabricloader": ">=0.11.3",
     "fabric": "*",
     "minecraft": [
-      "1.17.x",
-      "1.18.x"
+      "1.18.2"
     ],
-    "java": ">=16",
+    "java": ">=17",
     "cloth-config2": ">=5.0.34"
   },
   "custom": {
