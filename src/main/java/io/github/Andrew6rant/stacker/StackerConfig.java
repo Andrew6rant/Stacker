@@ -31,6 +31,7 @@ public class StackerConfig implements ConfigData {
     public int itemCountScaleInt = 25;
 
     public List<String> itemOverride = Arrays.asList(
+        "minecraft:bundle:1",
         "minecraft:totem_of_undying:16",
         "#c:potions:16",
         "#inmis:backpacks:1",
