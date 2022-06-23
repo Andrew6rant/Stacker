@@ -6,7 +6,6 @@
   "mixins": [
     "AnvilScreenHandlerMixin",
     "BucketItemMixin",
-    "BundleItemMixin",
     "DispenserBehaviorMixin",
     "HorseScreenHandlerMixin",
     "ItemAccess",
