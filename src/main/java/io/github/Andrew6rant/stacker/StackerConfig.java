@@ -30,6 +30,7 @@ public class StackerConfig implements ConfigData {
     @ConfigEntry.BoundedDiscrete(min = 0, max = 50)
     public int itemCountScaleInt = 25;
 
+    @ConfigEntry.Gui.Tooltip
     public List<String> itemOverride = Arrays.asList(
         "minecraft:bundle:1",
         "minecraft:totem_of_undying:16",
