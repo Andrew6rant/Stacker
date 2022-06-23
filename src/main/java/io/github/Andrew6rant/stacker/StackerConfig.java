@@ -1,20 +1,11 @@
 package io.github.Andrew6rant.stacker;
 
-import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.ConfigData;
 import me.shedaniel.autoconfig.annotation.Config;
 import me.shedaniel.autoconfig.annotation.ConfigEntry;
-import me.shedaniel.autoconfig.serializer.JanksonConfigSerializer;
-import me.shedaniel.clothconfig2.api.ConfigBuilder;
-import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.item.Items;
-import net.minecraft.text.TranslatableText;
-import net.minecraft.util.registry.Registry;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Config(name = "stacker")
 public class StackerConfig implements ConfigData {
