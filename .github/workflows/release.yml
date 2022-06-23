@@ -28,7 +28,7 @@ jobs:
           modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
           curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
           version-type: release
-          github-tag: 3.0.0-1.18.2
+          github-tag: stacker-3.0.1-1.18.2
           loaders: |
             fabric
             quilt
