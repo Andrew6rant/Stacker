@@ -23,10 +23,9 @@ public class StackerConfig implements ConfigData {
 
     @ConfigEntry.Gui.Tooltip
     public List<String> itemOverride = Arrays.asList(
-        "minecraft:bundle:1",
+        "#stacker:not_stackable:1",
         "minecraft:totem_of_undying:16",
-        "#c:potions:16",
-        "#inmis:backpacks:1",
-        "#techreborn:not_stackable:1"
+        "#c:potions:16"
     );
+    // #techreborn:not_stackable and #inmis:backpacks are kept for backwards compatibility with older configs
 }
