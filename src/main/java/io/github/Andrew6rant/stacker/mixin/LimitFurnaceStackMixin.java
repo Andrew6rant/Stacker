@@ -1,13 +1,11 @@
 package io.github.Andrew6rant.stacker.mixin;
+
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.screen.AbstractFurnaceScreenHandler;
 import net.minecraft.screen.slot.FurnaceFuelSlot;
 import net.minecraft.screen.slot.Slot;
 import org.spongepowered.asm.mixin.Mixin;
-
-import net.fabricmc.loader.api.FabricLoader;
 
 @Mixin(FurnaceFuelSlot.class)
 public abstract class LimitFurnaceStackMixin extends Slot {
