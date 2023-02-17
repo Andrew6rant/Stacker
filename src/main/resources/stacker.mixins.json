@@ -13,7 +13,8 @@
     "JukeboxBlockMixin",
     "LimitFurnaceStackMixin",
     "MilkBucketItemMixin",
-    "StewItemMixin"
+    "StewItemMixin",
+    "BundleItemMixin"
   ],
   "client": [
     "ItemRenderScaleMixin"
