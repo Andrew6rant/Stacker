@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
 public class Stacker implements ModInitializer {
 	private static final Logger LOGGER = LogManager.getLogger("Stacker");
 	private static Stacker stacker;
-	public static ConfigHolder<StackerConfig> stackerConfig;
+	static ConfigHolder<StackerConfig> stackerConfig;
 
 	@Override
 	public void onInitialize() {
