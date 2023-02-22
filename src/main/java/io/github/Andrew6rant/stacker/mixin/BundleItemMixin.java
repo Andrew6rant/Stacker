@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 import static io.github.Andrew6rant.stacker.Stacker.stackerConfig;
 
 /**
- * Mixin class used to modify vanilla's magic numbers to use this mod's configured 'maxStacker' value
+ * Modifies BundleItem's magic numbers to use Stacker's configured 'maxStacker' value
  */
 @Mixin(BundleItem.class)
 public abstract class BundleItemMixin {
