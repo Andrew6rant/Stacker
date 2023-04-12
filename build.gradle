@@ -16,7 +16,17 @@ repositories {
 	maven { url = "https://storage.googleapis.com/devan-maven/" }
 	maven { url = "https://maven.shedaniel.me/" }
 	maven { url = "https://maven.terraformersmc.com/releases/" }
-
+	exclusiveContent {
+		forRepository {
+			maven {
+				name = "Modrinth"
+				url = "https://api.modrinth.com/maven"
+			}
+		}
+		filter {
+			includeGroup "maven.modrinth"
+		}
+	}
 	// Add repositories to retrieve artifacts from in here.
 	// You should only use this when depending on other mods because
 	// Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
@@ -33,13 +43,17 @@ dependencies {
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
-	include "net.devtech:Stacc:${project.stacc_version}"
-	modRuntimeOnly(include("net.devtech:Stacc:${project.stacc_version}"))
+	//include "net.devtech:Stacc:${project.stacc_version}"
+	//modRuntimeOnly(include("net.devtech:Stacc:${project.stacc_version}"))
+
+	include "maven.modrinth:stacc-api:${project.stacc_version}"
+	modRuntimeOnly(include "maven.modrinth:stacc-api:${project.stacc_version}")
 
 	modApi("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version}") {
 		exclude(group: "net.fabricmc.fabric-api")
 	}
 
+	modRuntimeOnly("com.terraformersmc:modmenu:${project.modmenu_version}")
 	modCompileOnly("com.terraformersmc:modmenu:${project.modmenu_version}") {
 		transitive = false
 	}
