@@ -1,0 +1,26 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "io.github.Andrew6rant.stacker.mixin",
+  "compatibilityLevel": "JAVA_16",
+  "mixins": [
+    "AnvilScreenHandlerMixin",
+    "BucketItemMixin",
+    "BundleItemMixin",
+    "DispenserBehaviorMixin",
+    "HorseScreenHandlerMixin",
+    "ItemAccess",
+    "ItemStackMixin",
+    "LimitFurnaceStackMixin",
+    "MilkBucketItemMixin",
+    "MusicDiscItemMixin",
+    "StewItemMixin"
+  ],
+  "client": [
+    "ItemRenderScaleMixin"
+  ],
+  "server": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
