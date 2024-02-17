@@ -11,9 +11,9 @@
     "HorseScreenHandlerMixin",
     "ItemAccess",
     "ItemStackMixin",
-    "JukeboxBlockMixin",
     "LimitFurnaceStackMixin",
     "MilkBucketItemMixin",
+    "MusicDiscItemMixin",
     "StewItemMixin"
   ],
   "client": [

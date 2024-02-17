@@ -7,19 +7,17 @@ import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.minecraft.item.Item;
-import net.minecraft.tag.TagKey;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
-
-import static net.minecraft.util.registry.Registry.ITEM_KEY;
 
 public class Stacker implements ModInitializer {
 	private static final Logger LOGGER = LogManager.getLogger("Stacker");
@@ -40,13 +38,13 @@ public class Stacker implements ModInitializer {
 	public static void loadStacker(String configMsg) {
 		LOGGER.info("Stacker: Attempting to "+configMsg+" config...");
 		Set<String> invalidSet = new HashSet<>();
-		for (Item item : Registry.ITEM) {
+		for (Item item : Registries.ITEM) {
 			if (!item.isDamageable()) {
 				Stacker.setMax(item, stackerConfig.getConfig().maxStacker);
 			}
 			Stacker.setMax(item, Stacker.overrideItem(item, stackerConfig.getConfig().itemOverride, invalidSet));
 		}
-		if (invalidSet.size() > 0) {
+		if (!invalidSet.isEmpty()) {
 			LOGGER.error("Stacker: Invalid override entries!");
 			LOGGER.warn("Stacker: The following entries were invalid:");
 			for (String invalid : invalidSet) {
@@ -86,9 +84,9 @@ public class Stacker implements ModInitializer {
 			if (overrideEntry.startsWith("#")) {
 				String[] splitEntry = overrideEntry.trim().substring(1).split(":"); // split into three parts: tag id, item name, max count
 				if (isValid(overrideEntry, splitEntry, invalidSet)) {
-					List<TagKey<Item>> itemStream = item.getRegistryEntry().streamTags().collect(Collectors.toList());
+					List<TagKey<Item>> itemStream = item.getRegistryEntry().streamTags().toList();
 					for (TagKey<Item> tagKey : itemStream) {
-						if (item.getRegistryEntry().isIn(TagKey.of(ITEM_KEY, new Identifier(splitEntry[0], splitEntry[1])))) {
+						if (item.getRegistryEntry().isIn(TagKey.of(RegistryKeys.ITEM, new Identifier(splitEntry[0], splitEntry[1])))) {
 							return Integer.parseInt(splitEntry[2]);
 						}
 					}
@@ -96,7 +94,7 @@ public class Stacker implements ModInitializer {
 			} else {
 				String[] splitEntry = overrideEntry.trim().split(":"); // split into three parts: tag id, item name, max count
 				if (isValid(overrideEntry, splitEntry, invalidSet)) {
-					if (Registry.ITEM.getId(item).toString().equalsIgnoreCase(splitEntry[0] + ":" + splitEntry[1])) {
+					if (Registries.ITEM.getId(item).toString().equalsIgnoreCase(splitEntry[0] + ":" + splitEntry[1])) {
 						return Integer.parseInt(splitEntry[2]);
 					}
 				}

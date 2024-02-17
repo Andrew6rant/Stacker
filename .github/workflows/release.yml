@@ -18,7 +18,7 @@ jobs:
       - name: make gradle wrapper executable
         run: chmod +x ./gradlew
       - name: build
-        run: ./gradlew build
+        run: ./gradlew build --no-daemon
       - uses: Kir-Antipov/mc-publish@v3.0
         with:
           curseforge-id: 515415

@@ -1,13 +1,12 @@
 package io.github.Andrew6rant.stacker.mixin;
+
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.screen.AbstractFurnaceScreenHandler;
 import net.minecraft.screen.slot.FurnaceFuelSlot;
 import net.minecraft.screen.slot.Slot;
 import org.spongepowered.asm.mixin.Mixin;
-
-import net.fabricmc.loader.api.FabricLoader;
+import org.spongepowered.asm.mixin.Unique;
 
 @Mixin(FurnaceFuelSlot.class)
 public abstract class LimitFurnaceStackMixin extends Slot {
@@ -24,6 +23,8 @@ public abstract class LimitFurnaceStackMixin extends Slot {
     public int getMaxItemCount(ItemStack stack) {
         return isBucket(stack) ? 1 : super.getMaxItemCount(stack);
     }
+
+    @Unique
     public boolean isBucket(ItemStack stack) {
         return stack.isOf(Items.BUCKET) || stack.isOf(Items.LAVA_BUCKET);
     }
